@@ -1,0 +1,10 @@
+.ProgramingLangContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 320px;
+}
+
+.ProgramingLangContainer strong {
+  padding: 2px 4px;
+}

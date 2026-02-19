@@ -1,0 +1,15 @@
+.GameStatusContainer {
+  min-width: 480px;
+  text-align: center;
+  padding: 0.5rem;
+  align-items: center;
+  background-color: transparent;
+}
+
+.isWon {
+  background-color: green;
+}
+
+.isLost {
+  background-color: red;
+}
