@@ -1,30 +1,29 @@
 import React from "react";
 import styles from "./Keyboard.module.css";
 
-const Keyboard = () => {
+const Keyboard = ({ slots, addChar, activeKey }) => {
   const atoz = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const handleClick = (letter) => {
-    console.log(letter);
-  };
 
+  const word = slots.map((w, i) => (
+    <span key={i} className={styles.kbInput}>
+      {w.toUpperCase()}
+    </span>
+  ));
   return (
     <>
-      <section className={styles.inputContainer}>
-        <span className={styles.kbInput}></span>
-        <span className={styles.kbInput}></span>
-        <span className={styles.kbInput}></span>
-        <span className={styles.kbInput}></span>
-        <span className={styles.kbInput}></span>
-        <span className={styles.kbInput}></span>
-        <span className={styles.kbInput}></span>
-        <span className={styles.kbInput}></span>
-      </section>
+      <section className={styles.inputContainer}>{word}</section>
+
       <section className={styles.keyBtnContainer}>
         {atoz.map((letter) => (
           <button
+            style={{
+              backgroundColor: activeKey === letter ? "#4CAF50" : "orange",
+              transition: "all 0.1s",
+            }}
             key={letter}
+            value={letter}
             className={styles.key}
-            onClick={() => handleClick(letter)}
+            onClick={() => addChar(letter)}
           >
             <p>{letter}</p>
           </button>

@@ -1,24 +1,17 @@
 import React from "react";
 import styles from "./Programing.module.css";
+import langs from "./langs";
 
 const Programing = () => {
-  return (
-    <div className={styles.ProgramingLangContainer}>
-      <strong style={{ backgroundColor: "OrangeRed" }}>HTML</strong>
-      <strong style={{ backgroundColor: "DodgerBlue" }}>CSS</strong>
-      <strong style={{ backgroundColor: "Gold", color: "black" }}>
-        JavaScript
-      </strong>
-      <strong style={{ backgroundColor: "Cyan", color: "black" }}>React</strong>
-      <strong style={{ backgroundColor: "DeepSkyBlue" }}>Typescript</strong>
-      <strong style={{ backgroundColor: "Green" }}>Node.js</strong>
-      <strong style={{ backgroundColor: "Orange", color: "black" }}>
-        Python
-      </strong>
-      <strong style={{ backgroundColor: "Red" }}>Ruby</strong>
-      <strong style={{ backgroundColor: "SteelBlue" }}>Assembly</strong>
-    </div>
-  );
+  const langElements = langs.map((lang) => (
+    <span
+      key={lang.name}
+      style={{ backgroundColor: lang.backgroundColor, color: lang.color }}
+    >
+      {lang.name}
+    </span>
+  ));
+  return <div className={styles.ProgramingLangContainer}>{langElements}</div>;
 };
 
 export default Programing;

@@ -1,18 +1,19 @@
 .inputContainer {
   display: inline-flex;
   gap: 2px;
-  justify-content: center; /* 水平置中內容 */
-  align-items: center; /* 垂直置中內容 */
+  justify-content: center;
+  align-items: center;
 }
 
 .kbInput {
   background-color: rgb(24, 24, 24);
   display: inline-flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
   width: 40px;
   height: 40px;
   border-bottom: 1px solid white;
+  font-size: 1.6rem;
 }
 
 .keyBtnContainer {
@@ -21,7 +22,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   gap: 6px;
 }
 .key {
@@ -30,7 +31,7 @@
   border-radius: 3px;
   height: 36px;
   width: 12px;
-  background-color: orangered;
+  background-color: orange;
   flex: 0 1 calc(10% - 6px);
   font-weight: 800;
 }
