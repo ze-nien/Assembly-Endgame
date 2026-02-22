@@ -6,6 +6,21 @@
 }
 
 .ProgramingLangContainer span {
+  position: relative;
   padding: 2px 4px;
   font-weight: bold;
+}
+
+span.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }

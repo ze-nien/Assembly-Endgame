@@ -1,37 +1,28 @@
 import React from "react";
 import styles from "./GameStatus.module.css";
+import clsx from "clsx";
 
-const GameStatus = () => {
-  const isWon = true;
-  const isLost = false;
-  const isGameOver = true;
-  let statusElement = null;
-
-  if (isGameOver) {
-    if (isWon) {
-      statusElement = (
-        <>
-          <h2>You win!</h2>
-          <h3>Well done!</h3>
-        </>
-      );
-    } else if (isLost) {
-      statusElement = (
-        <>
-          <h2>Game over!</h2>
-          <h3>You lose! Better start learning Assembly 💀</h3>
-        </>
-      );
-    }
-  } else {
-    statusElement = <></>;
-  }
+const GameStatus = ({ isGameOver, isGameLost, isGameWon }) => {
+  const className = clsx(styles.GameStatusContainer, {
+    [styles.isWon]: isGameWon,
+    [styles.isLost]: isGameLost,
+  });
 
   return (
-    <div
-      className={`${styles.GameStatusContainer} ${isWon && styles.isWon}  ${isLost && styles.isLost}`}
-    >
-      {statusElement}
+    <div className={className}>
+      {isGameOver ? (
+        isGameWon ? (
+          <div>
+            <h2>You win!</h2>
+            <h3>Well done!</h3>
+          </div>
+        ) : (
+          <div>
+            <h2>Game over!</h2>
+            <h3>You lose! Better start learning Assembly 💀</h3>
+          </div>
+        )
+      ) : null}
     </div>
   );
 };

@@ -6,8 +6,11 @@
 }
 
 .NewGame {
-  width: 120px;
-  height: 28px;
+  font-weight: 700;
+  font-size: large;
+  width: 160px;
+  height: 36px;
   background-color: cadetblue;
   border: none;
+  cursor: pointer;
 }

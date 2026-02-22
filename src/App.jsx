@@ -2,56 +2,59 @@ import GameStatus from "./components/GameStatus";
 import Keyboard from "./components/Keyboard";
 import Programing from "./components/Programing";
 import Header from "./Header";
+import langs from "./components/langs";
 import styles from "./App.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  const [slots, setSlots] = useState(Array(8).fill(""));
-  const [cursor, setCursor] = useState(0);
-  const [activeKey, setActiveKey] = useState(null);
+  const [currentWord, setCurrentWord] = useState("REACT");
+  const [guessLetter, setGuessLetter] = useState([]);
 
-  const addChar = (char) => {
-    if (cursor < 8) {
-      setSlots((prev) => {
-        const newArr = [...prev];
-        newArr[cursor] = char.toUpperCase();
-        return newArr;
-      });
-      setCursor((c) => c + 1);
-      setActiveKey(char.toUpperCase());
-    }
+  const wrongGuessCount = guessLetter.filter(
+    (letter) => !currentWord.includes(letter),
+  ).length;
+  const isGameWon = currentWord
+    .split("")
+    .every((letter) => guessLetter.includes(letter));
+  const isGameLost = wrongGuessCount >= langs.length - 1;
+  const isGameOver = isGameWon || isGameLost;
+
+  console.log(isGameOver ? "true" : "false");
+  const addLetter = (letter) => {
+    setGuessLetter((prev) =>
+      guessLetter.includes(letter) ? prev : [...prev, letter.toUpperCase()],
+    );
   };
-
-  useEffect(() => {
-    const keyDown = (e) => {
-      if (e.key.length === 1) {
-        addChar(e.key);
-      }
-    };
-    window.addEventListener("keydown", keyDown);
-    return () => window.removeEventListener("keydown", keyDown);
-  }, [cursor]);
 
   return (
     <>
       <Header />
       <main>
         <section className={styles.section}>
-          <GameStatus />
+          <GameStatus
+            isGameOver={isGameOver}
+            isGameLost={isGameLost}
+            isGameWon={isGameWon}
+          />
         </section>
 
         <section className={styles.section}>
-          <Programing />
+          <Programing langs={langs} wrongGuessCount={wrongGuessCount} />
         </section>
 
         <section className={styles.section}>
-          <Keyboard slots={slots} addChar={addChar} activeKey={activeKey} />
+          <Keyboard
+            isGameOver={isGameOver}
+            addLetter={addLetter}
+            currentWord={currentWord.toUpperCase()}
+            guessLetter={guessLetter}
+          />
         </section>
 
         <section className={styles.section}>
-          <button className={styles.NewGame}>
-            <strong>New Game</strong>
-          </button>
+          {isGameOver ? (
+            <button className={styles.NewGame}>New Game</button>
+          ) : null}
         </section>
       </main>
     </>

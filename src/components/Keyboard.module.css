@@ -25,13 +25,29 @@
   margin-top: 1rem;
   gap: 6px;
 }
+
 .key {
   color: black;
-  border: none;
+  border: 1px solid #d7d7d7;
   border-radius: 3px;
   height: 36px;
   width: 12px;
-  background-color: orange;
+  background-color: #fcba29;
   flex: 0 1 calc(10% - 6px);
   font-weight: 800;
+  cursor: pointer;
+  font-size: large;
+}
+
+.key:disabled {
+  cursor: auto;
+  opacity: 0.5;
+}
+
+.correct {
+  background-color: #10a95b;
+}
+
+.wrong {
+  background-color: #ec5d49;
 }
