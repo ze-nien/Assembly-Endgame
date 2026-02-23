@@ -51,3 +51,7 @@
 .wrong {
   background-color: #ec5d49;
 }
+
+.missLetter {
+  color: red;
+}

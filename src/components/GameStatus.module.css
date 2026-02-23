@@ -1,10 +1,11 @@
 .GameStatusContainer {
-  min-width: 480px;
-  height: 65px;
-  text-align: center;
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  background-color: transparent;
+  justify-content: center;
+  min-width: 480px;
+  min-height: 60px;
+  text-align: center;
 }
 
 .isWon {
@@ -13,4 +14,11 @@
 
 .isLost {
   background-color: red;
+}
+
+.incorrect {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
+  font-style: italic;
+  font-weight: 400;
 }

@@ -26,7 +26,7 @@ const lang = [
   },
   {
     name: "Node.js",
-    backgroundColor: "#72C865",
+    backgroundColor: "#50754B",
     color: "#F9F4DA",
   },
   {

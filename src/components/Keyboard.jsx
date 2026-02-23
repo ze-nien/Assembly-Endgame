@@ -2,16 +2,28 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./Keyboard.module.css";
 
-const Keyboard = ({ addLetter, currentWord, guessLetter, isGameOver }) => {
+const Keyboard = ({
+  addLetter,
+  currentWord,
+  guessLetter,
+  isGameOver,
+  isGameLost,
+}) => {
   const atoz = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
   return (
     <>
       <section className={styles.inputContainer}>
-        {currentWord.split("").map((letter) => (
-          <span key={letter} className={styles.kbInput}>
-            {guessLetter.includes(letter) ? letter.toUpperCase() : ""}
-          </span>
-        ))}
+        {currentWord.split("").map((letter, index) => {
+          const letterClassName = clsx(styles.kbInput, {
+            [styles.missLetter]: isGameLost && !guessLetter.includes(letter),
+          });
+          return (
+            <span key={`${letter}-${index}`} className={letterClassName}>
+              {isGameLost || guessLetter.includes(letter) ? letter : ""}
+            </span>
+          );
+        })}
       </section>
       <section className={styles.keyBtnContainer}>
         {atoz.map((letter) => {

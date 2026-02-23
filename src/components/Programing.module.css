@@ -2,13 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 320px;
+  max-width: 360px;
+  gap: 5px;
 }
 
 .ProgramingLangContainer span {
   position: relative;
   padding: 2px 4px;
   font-weight: bold;
+  border-radius: 2px;
 }
 
 span.lost::before {
